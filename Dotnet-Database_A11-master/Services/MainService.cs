@@ -24,7 +24,7 @@ public class MainService : IMainService
     {
         while (true)
         {
-            Console.Write($"Search for a movie:\n1: Id\n2: Title\n3: List Movies\n4: Add Movie\n5: Exit\nEnter: ");
+            Console.Write($"Search for a movie:\n1: Id\n2: Title\n3: List Movies\n4: Add Movie\n5: Modify Movie\n6: Delete Movie\n7: Exit\nEnter: ");
             var idOrTitleAnswer = Console.ReadLine();
 
             if( idOrTitleAnswer == "1" ) 
@@ -46,8 +46,15 @@ public class MainService : IMainService
             {
                 _context.AddMovie();
             }
-
             else if (idOrTitleAnswer == "5")
+            {
+                _context.ModifyMovie();
+            }
+            else if (idOrTitleAnswer == "6")
+            {
+                _context.DeleteMovie();
+            }
+            else if (idOrTitleAnswer == "7")
             {
                 Console.WriteLine("\nExiting the program...");
                 break;

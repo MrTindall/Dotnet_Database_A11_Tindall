@@ -135,5 +135,65 @@ namespace MovieLibraryEntities.Dao
             .UseLazyLoadingProxies()
             .UseSqlServer(configuration.GetConnectionString("MovieContext"));
         }
+
+        public void ModifyMovie()
+        {
+            Console.WriteLine("Enter Movie to Modify");
+            var userInput = Console.ReadLine();
+            var movie = Search(userInput);
+            if (movie != null)
+            {           
+                var titleToMod = GetByTitle(userInput);
+                if(titleToMod != null)
+                {
+                    Console.WriteLine($"Enter a new Title to replace {titleToMod.Title}");
+                    var newTitle = Console.ReadLine();
+                    if (newTitle != null)
+                    {
+                        titleToMod.Title = newTitle;
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Title Does not Exist");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+
+        }
+
+        public void DeleteMovie()
+        {
+            Console.WriteLine("Enter Movie to Delete");
+            var userInput = Console.ReadLine();
+            var movie = Search(userInput);
+            if (movie != null)
+            {
+                var titleToDelete = GetByTitle(userInput);
+
+                if (titleToDelete != null)
+                {
+                    _context.Remove(titleToDelete); 
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("Title Does not Exist");
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+            }
+        }
     }
 }

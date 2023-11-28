@@ -14,5 +14,8 @@ namespace MovieLibraryEntities.Dao
         void ReadById();
         void ReadByTitle();
         void ReturnAllMovies();
+
+        void ModifyMovie();
+        void DeleteMovie();
     }
 }
