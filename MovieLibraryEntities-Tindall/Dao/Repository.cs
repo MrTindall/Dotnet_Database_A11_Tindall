@@ -141,6 +141,7 @@ namespace MovieLibraryEntities.Dao
             Console.WriteLine("Enter Movie to Modify");
             var userInput = Console.ReadLine();
             var movie = Search(userInput);
+            Console.WriteLine();
             if (movie != null)
             {           
                 var titleToMod = GetByTitle(userInput);
@@ -150,22 +151,23 @@ namespace MovieLibraryEntities.Dao
                     var newTitle = Console.ReadLine();
                     if (newTitle != null)
                     {
+                        Console.WriteLine($"{titleToMod.Title} is now {newTitle}\n");
                         titleToMod.Title = newTitle;
                         _context.SaveChanges();
                     }
                     else
                     {
-                        Console.WriteLine("Title Does not Exist");
+                        Console.WriteLine("Title Does not Exist\n");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("Invalid Input\n");
                 }
             }
             else
             {
-                Console.WriteLine("Invalid Input");
+                Console.WriteLine("Invalid Input\n");
             }
 
         }
@@ -175,24 +177,26 @@ namespace MovieLibraryEntities.Dao
             Console.WriteLine("Enter Movie to Delete");
             var userInput = Console.ReadLine();
             var movie = Search(userInput);
+            Console.WriteLine();
             if (movie != null)
             {
                 var titleToDelete = GetByTitle(userInput);
 
                 if (titleToDelete != null)
                 {
+                    Console.WriteLine($"{titleToDelete.Title} is now deleted\n");
                     _context.Remove(titleToDelete); 
                     _context.SaveChanges();
                 }
                 else
                 {
-                    Console.WriteLine("Title Does not Exist");
+                    Console.WriteLine("Title Does not Exist\n");
                 }
 
             }
             else
             {
-                Console.WriteLine("Invalid Input");
+                Console.WriteLine("Invalid Input\n");
             }
         }
     }

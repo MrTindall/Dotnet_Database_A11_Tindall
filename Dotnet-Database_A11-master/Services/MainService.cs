@@ -24,7 +24,7 @@ public class MainService : IMainService
     {
         while (true)
         {
-            Console.Write($"Search for a movie:\n1: Id\n2: Title\n3: List Movies\n4: Add Movie\n5: Modify Movie\n6: Delete Movie\n7: Exit\nEnter: ");
+            Console.Write($"\nSearch for a movie:\n\n1: Id\n2: Title\n3: List Movies\n4: Add Movie\n5: Modify Movie\n6: Delete Movie\n7: Exit\nEnter: ");
             var idOrTitleAnswer = Console.ReadLine();
 
             if( idOrTitleAnswer == "1" ) 
